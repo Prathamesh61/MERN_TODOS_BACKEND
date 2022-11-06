@@ -8,7 +8,7 @@ TodoRouter.get("/todos", authentication, getTodos);
 
 TodoRouter.post("/create", authentication, postTodos);
 
-TodoRouter.patch("/update", authentication, patchTodos);
+TodoRouter.patch("/update/:id", authentication, patchTodos);
 
 TodoRouter.delete("/delete/:id", authentication, deleteTodos);
 

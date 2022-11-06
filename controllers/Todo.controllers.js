@@ -30,11 +30,12 @@ const postTodos = async (req, res) => {
 
 
 const patchTodos = async (req, res) => {
-    let { _id, user_id } = req.body;
-    console.log(_id, user_id);
+    let {  user_id } = req.body;
+    let {  id } = req.params;
+    console.log(id, user_id);
     let { title, note, tag } = req.body;
-    await Todo.findOneAndUpdate({ user_id, _id }, { title, note, tag });
-    let updatedNote = await Todo.find({ user_id, _id });
+    await Todo.findOneAndUpdate({ user_id, id }, { title, note, tag });
+    let updatedNote = await Todo.find({ user_id, id });
     console.log(updatedNote);
     res.send({ "msg": "Data Updated Successfully", updatedNote: updatedNote })
 }
