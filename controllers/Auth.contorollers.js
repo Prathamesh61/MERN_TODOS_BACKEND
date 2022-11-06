@@ -32,6 +32,7 @@ const signUpUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     let { email, password } = req.body;
+    console.log(email, password);
     let user = await User.findOne({ email });
     let hash = user.password;
     const user_id = user._id;
@@ -42,8 +43,7 @@ const loginUser = async (req, res) => {
         if (result) {
             const token = jwt.sign({ user_id }, process.env.SECRET_KEY);
             res.send({ message: "Login successfull", "token": token, "user": `Login Successfull. welcome ${user.name}` })
-        }
-        else {
+        } else {
             res.send({ "msg": "Login failed" })
         }
     })
