@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
         }
         if (result) {
             const token = jwt.sign({ user_id }, process.env.SECRET_KEY);
-            res.send({ message: "Login successfull", token },{ "user": `Login Successfull. welcome ${user.name}` })
+            res.send({ message: "Login successfull", "token": token, "user": `Login Successfull. welcome ${user.name}` })
         }
         else {
             res.send({ "msg": "Login failed" })

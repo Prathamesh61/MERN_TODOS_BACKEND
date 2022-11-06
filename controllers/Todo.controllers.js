@@ -53,5 +53,4 @@ const deleteTodos = async (req, res) => {
     console.log(remaining);
     res.send({ "msg": "Data Deleted Successfully", remaining: remaining })
 }
-
 module.exports = { getTodos, postTodos, patchTodos, deleteTodos, checkValidation };
