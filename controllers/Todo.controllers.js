@@ -41,7 +41,7 @@ const patchTodos = async (req, res) => {
 
 const deleteTodos = async (req, res) => {
     let { user_id } = req.body;
-    let { id } = req.param;
+    let { id } = req.params;
     console.log(_id, user_id);
     const data = await Todo.findOneAndDelete({ user_id, _id:id });
     await data;
