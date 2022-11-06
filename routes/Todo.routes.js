@@ -10,6 +10,6 @@ TodoRouter.post("/create", authentication, postTodos);
 
 TodoRouter.patch("/update", authentication, patchTodos);
 
-TodoRouter.delete("/delete", authentication, deleteTodos);
+TodoRouter.delete("/delete/:_id", authentication, deleteTodos);
 
 module.exports = { TodoRouter };

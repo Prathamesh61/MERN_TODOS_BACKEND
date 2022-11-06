@@ -40,8 +40,8 @@ const patchTodos = async (req, res) => {
 }
 
 const deleteTodos = async (req, res) => {
-
-    let { _id, user_id } = req.body;
+    let {  user_id } = req.body;
+    let {  _id } = req.param;
     console.log(_id, user_id);
     await Todo.findOneAndDelete({ user_id, _id });
     let remaining = await Todo.find({ user_id });
