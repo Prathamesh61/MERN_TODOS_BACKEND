@@ -21,16 +21,11 @@ const getTodos = async (req, res) => {
 
 
 const postTodos = async (req, res) => {
-    try {
         let { title, note, tag, user_id } = req.body;
         let newNote = new Todo({ user_id, title, note, tag });
         await newNote.save();
         console.log(newNote);
         res.send({ "msg": `todo with title ${title} created Successfully`, newNote: newNote })
-    } catch (err) {
-        console.log(err);
-        res.send(err);
-    }
 }
 
 

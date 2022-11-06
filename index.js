@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 app.use("/", UserRouter);
 
-app.use("/", authentication, TodoRouter);
+app.use("/", TodoRouter);
 
 app.listen(process.env.PORT, async () => {
     try {
