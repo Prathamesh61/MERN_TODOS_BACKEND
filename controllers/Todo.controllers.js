@@ -21,11 +21,11 @@ const getTodos = async (req, res) => {
 
 
 const postTodos = async (req, res) => {
-        let { title, note, tag, user_id } = req.body;
-        let newNote = new Todo({ user_id, title, note, tag });
-        await newNote.save();
-        console.log(newNote);
-        res.send({ "msg": `todo with title ${title} created Successfully`, newNote: newNote })
+    let { title, note, tag, user_id } = req.body;
+    let newNote = new Todo({ user_id, title, note, tag });
+    await newNote.save();
+    console.log(newNote);
+    res.send({ "msg": `todo with title ${title} created Successfully`, newNote: newNote })
 }
 
 
@@ -40,12 +40,13 @@ const patchTodos = async (req, res) => {
 }
 
 const deleteTodos = async (req, res) => {
-    let {  user_id } = req.body;
-    let {  _id } = req.param;
+    let { user_id } = req.body;
+    let { _id } = req.param;
     console.log(_id, user_id);
-    await Todo.findOneAndDelete({ user_id, _id });
+    const data = await Todo.findOneAndDelete({ user_id, _id });
+    await data;
     let remaining = await Todo.find({ user_id });
     console.log(remaining);
-    res.send({ "msg": "Data Deleted Successfully", remaining: remaining })
+    res.send({ "msg": "Data Deleted Successfully", data: data, remaining: remaining })
 }
 module.exports = { getTodos, postTodos, patchTodos, deleteTodos, checkValidation };
